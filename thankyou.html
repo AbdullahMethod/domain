@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Thank You — Beautiful Confirmation</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Custom animations */
+    @keyframes floaty {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+      100% { transform: translateY(0); }
+    }
+    .floaty { animation: floaty 4s ease-in-out infinite; }
+
+    /* Soft glass card */
+    .glass {
+      background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      backdrop-filter: blur(8px) saturate(120%);
+      -webkit-backdrop-filter: blur(8px) saturate(120%);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    /* Confetti pieces */
+    .confetti {
+      position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+    }
+    .confetti i {
+      position: absolute; display: block; width: 10px; height: 18px; opacity: 0.95;
+      transform-origin: center;
+      animation: confetti-fall linear infinite;
+    }
+    @keyframes confetti-fall {
+      0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(540deg); opacity: 0.9; }
+    }
+
+    /* Decorative corner blob */
+    .blob {
+      position: absolute; width: 420px; height: 420px; filter: blur(64px); opacity: .45; z-index: 0;
+    }
+
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-indigo-900 via-slate-900 to-rose-900 text-slate-100 flex items-center justify-center p-6">
+  <!-- Background blobs -->
+  <div class="blob rounded-full bg-gradient-to-tr from-pink-500 via-amber-400 to-yellow-300 left-0 -translate-x-1/3 -translate-y-1/3" style="position: absolute; top: -80px; left: -80px;"></div>
+  <div class="blob rounded-full bg-gradient-to-bl from-cyan-400 via-indigo-500 to-purple-700" style="position: absolute; bottom: -120px; right: -120px;"></div>
+
+  <div class="relative w-full max-w-4xl">
+    <div class="confetti" aria-hidden="true" id="confetti"></div>
+
+    <main class="relative glass rounded-2xl p-8 md:p-12 shadow-2xl overflow-hidden" style="z-index: 10;">
+      <div class="flex flex-col md:flex-row items-center gap-8">
+        <div class="w-full md:w-1/2 text-center md:text-left">
+          <div class="inline-flex items-center justify-center w-28 h-28 rounded-full bg-white/10 ring-1 ring-white/5 mb-6 floaty">
+            <!-- Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-14 h-14 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round" />
+              <circle cx="12" cy="12" r="9" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+
+          <h1 class="text-3xl md:text-4xl font-extrabold leading-tight">Thank You!</h1>
+          <p class="mt-4 text-slate-200 text-lg md:text-xl">We received your submission. Your support means a lot — we've saved your info and will be in touch shortly.</p>
+
+          <div class="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <a href="#" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-white/10 hover:bg-white/20 ring-1 ring-white/6 transition">Go to Dashboard
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-gradient-to-r from-pink-500 to-amber-400 text-slate-900 font-semibold shadow-lg hover:scale-[1.02] transform transition">Download Receipt
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v12m0 0l-4-4m4 4l4-4"/></svg>
+            </a>
+          </div>
+
+          <div class="mt-6 text-sm text-slate-300">Want updates? <a href="#subscribe" class="underline hover:text-white">Subscribe to email</a> or <a href="#contact" class="underline hover:text-white">contact us</a>.</div>
+
+        </div>
+
+        <aside class="w-full md:w-1/2">
+          <div class="p-6 rounded-xl bg-gradient-to-br from-white/3 to-white/2 border border-white/6 shadow-inner">
+            <h3 class="font-semibold text-lg">What's next</h3>
+            <ul class="mt-4 space-y-3 text-slate-200">
+              <li class="flex items-start gap-3">
+                <div class="w-9 h-9 rounded-lg bg-white/6 grid place-items-center">1</div>
+                <div>
+                  <div class="font-medium">Check your inbox</div>
+                  <div class="text-sm text-slate-300">We sent a confirmation to the email you provided.</div>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="w-9 h-9 rounded-lg bg-white/6 grid place-items-center">2</div>
+                <div>
+                  <div class="font-medium">Next steps</div>
+                  <div class="text-sm text-slate-300">A short guide to help you get started will arrive shortly.</div>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="w-9 h-9 rounded-lg bg-white/6 grid place-items-center">3</div>
+                <div>
+                  <div class="font-medium">Need help?</div>
+                  <div class="text-sm text-slate-300">Reach out anytime — we usually reply within 1 business day.</div>
+                </div>
+              </li>
+            </ul>
+
+            <div class="mt-6 text-sm text-slate-300">Share your experience:</div>
+            <div class="mt-3 flex gap-3">
+              <a aria-label="twitter" href="#" class="p-2 rounded-md bg-white/6 hover:bg-white/10">T</a>
+              <a aria-label="linkedin" href="#" class="p-2 rounded-md bg-white/6 hover:bg-white/10">in</a>
+              <a aria-label="facebook" href="#" class="p-2 rounded-md bg-white/6 hover:bg-white/10">f</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <footer class="mt-8 text-center text-slate-400 text-sm">Need something changed? Reply to the confirmation email or <a href="#contact" class="underline">contact support</a>.</footer>
+    </main>
+
+    <!-- Floating decorative card -->
+    <div class="absolute -top-10 right-6 w-44 h-44 rounded-2xl glass p-4 transform rotate-6 shadow-xl hidden md:block">
+      <div class="text-xs uppercase tracking-wide text-slate-200">You're all set</div>
+      <div class="mt-3 text-lg font-bold">Order #<span id="order">A1B2C3</span></div>
+      <div class="mt-2 text-sm text-slate-300">Processed • <span class="font-medium">Instant</span></div>
+    </div>
+  </div>
+
+  <script>
+    // Generate confetti pieces
+    const confetti = document.getElementById('confetti');
+    const colors = ['#FF6B6B','#FFD166','#06D6A0','#4D96FF','#C77DFF'];
+    for (let i = 0; i < 28; i++) {
+      const el = document.createElement('i');
+      el.style.left = Math.random() * 100 + '%';
+      el.style.top = Math.random() * -20 + 'vh';
+      el.style.background = colors[Math.floor(Math.random() * colors.length)];
+      el.style.width = (6 + Math.random()*14) + 'px';
+      el.style.height = (8 + Math.random()*22) + 'px';
+      el.style.borderRadius = Math.random() > 0.5 ? '3px' : '50%';
+      el.style.transform = 'rotate(' + (Math.random()*360) + 'deg)';
+      el.style.animationDuration = (6 + Math.random()*6) + 's';
+      el.style.opacity = 0.95;
+      confetti.appendChild(el);
+    }
+
+    // Small script to generate a friendly order id
+    function makeOrderId(){
+      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      let id = '';
+      for(let i=0;i<6;i++) id += chars.charAt(Math.floor(Math.random()*chars.length));
+      return id;
+    }
+    document.getElementById('order').textContent = makeOrderId();
+  </script>
+</body>
+</html>
